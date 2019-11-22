@@ -1,0 +1,27 @@
+<h2>{{authorlist.length}} Authors</h2>
+
+<ul>
+    <li *ngFor = 'let author of authorlist'>{{author}}</li>
+</ul>
+<!-- <img [src] = "imgurl"/> -->
+<!-- <table>
+    <tr>
+        <td [attr.colspan] = "colSpm" ></td>
+    </tr>
+</table> -->
+<button class = "btn btn-primary" [class.active]="isActive">author</button>
+<button [style.backgroundColor] = " whitenjnj">author2</button>
+<button (click) = "onSave()">save</button>
+<div  (click) = "onDivClick()">
+    <button (click) = "onSave1($event)">save1</button>
+</div>
+<input type="text" [(ngModel)] = "email" (keyup.enter) = "onKeyUp()"><br/>
+{{course.title|uppercase|lowercase}}<br/>
+{{course.rate|number:"2.1-1"}}<br/>
+{{course.students|number}}<br/>
+{{course.price|currency:"INR"}}<br/>
+{{course.releaseddate|date:"shortDate"}}<br/>
+{{text|summary:80}}<br/>
+
+<span class="glyphicon glyphicon-star" ></span>
+<span class="glyphicon glyphicon-star-empty"></span>

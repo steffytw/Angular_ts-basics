@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                <form (ngSubmit) = "onSubmit()" #f="ngForm " >
+                    <div  class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text"  class="form-control" ngModel name="username"required>
+ 
+                    </div>
+
+                    <button class="btn btn-default" type="button" (click)="suggestUsername()">Suggest username</button>
+
+                    <div  class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" ngModel name="email" required email  #email="ngModel">
+                            <span class="help-block" *ngIf="!email.valid && email.touched">please enter a valid email<strong>example@gmail.com</strong></span>
+    
+                        </div>
+                        <div  class="form-group">
+                                <label for="secret">Secret Question</label>
+                                
+                                <select class="form-control" ngModel name="secret" [ngModel] = "defaultQuestion">
+                                    <option value="pet">your first pet name</option>
+                                    <option value="teacher">your first teacher name</option>
+                                </select>
+        
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="questionAnswer" rows="3"  [(ngModel)]="answer"></textarea>
+
+                            </div>
+                            <p>Your answer is:{{answer}}</p>
+                            
+                            <div class="radio" *ngFor = "let gender of genders">
+                                <label>
+                                    <input type="radio" name="gender" ngModel [value] ="gender">
+                                    {{gender}}
+                                </label>
+
+                            </div>
+                            <button class="btn btn-primary" [disabled] ="!f.valid" type="submit" >submit</button>
+                </form>
+                </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12" *ngIf ="isSubmitted">
+
+            <h3>Your data</h3>
+            <p>Username: {{userData.value.username}}</p>
+            <p>Email:{{userData.value.email}}</p>
+            <p>Secret:{{userData.value.secret}}</p>
+            <p>Answer:{{userData.value.questionAnswer}}</p>
+            <p>Gender:{{userData.value.gender}}</p>
+
+        </div>
+    </div>
+</div>
